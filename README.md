@@ -31,6 +31,8 @@ This pipeline solves a common data engineering challenge: **ingesting multiple f
 - **Exploratory Data Analysis**: Quick ingestion for analysis with persistent storage
 
 ## 🏗️ Architecture
+<img width="1759" height="871" alt="image" src="https://github.com/user-attachments/assets/55c34eb0-bfc2-4cd9-9a10-e429857fbed0" />
+
 
 ```
 ┌─────────────────┐
@@ -66,6 +68,7 @@ This pipeline solves a common data engineering challenge: **ingesting multiple f
 └─────────────────┘
          │
          ▼
+(Optional)
 ┌─────────────────┐
 │  Existing DBs   │
 │  ├── PostgreSQL │
