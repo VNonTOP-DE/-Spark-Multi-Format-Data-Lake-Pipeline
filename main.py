@@ -2,7 +2,16 @@
 from config.spark_config import SparkConnect
 from schema_manager import load_all_sources
 from utils.spark_write_iceberg import write_to_iceberg, verify_iceberg
+from utils.arrow_utils import optimize_dataframe_for_arrow
 import time
+import logging
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+log = logging.getLogger(__name__)
 
 def main():
     jars = [
@@ -17,6 +26,10 @@ def main():
 
     # Toggle MinIO
     USE_MINIO = True
+
+    # Enable PyArrow for faster processing
+    ENABLE_ARROW = True
+    ARROW_BATCH_SIZE = 10000
 
     if USE_MINIO:
         WAREHOUSE = "warehouse"
@@ -82,6 +95,9 @@ def main():
         else:
             print(f"ℹ Warehouse directory does not exist: {WAREHOUSE}")
 
+
+
+
     sparkconnect = SparkConnect(
         app_name="vnontop",
         master_url="local[*]",
@@ -91,9 +107,15 @@ def main():
         jar_packages=jars,
         log_level="WARN",
         iceberg_warehouse=WAREHOUSE,
-        s3_config=s3_config  # ← giờ đã luôn luôn tồn tại
+        s3_config=s3_config,
+        enable_arrow=ENABLE_ARROW,
+        arrow_batch_size=ARROW_BATCH_SIZE
     )
     spark = sparkconnect.spark
+
+    # Verify Arrow is enabled
+    arrow_enabled = spark.conf.get("spark.sql.execution.arrow.pyspark.enabled", "false")
+    print(f"{'✓' if arrow_enabled == 'true' else '✗'} Arrow optimization: {arrow_enabled}")
 
     # Drop existing database
     try:
@@ -111,25 +133,59 @@ def main():
     print("=== STARTING INGESTION PIPELINE ===")
     print("="*60)
 
+    start_time = time.time()
     all_dataframes = load_all_sources(spark)
 
     if not all_dataframes:
         print("\nError: No files loaded!")
         sparkconnect.stop()
         return
+    load_time = time.time() - start_time
+    print(f"\n⏱️ Loading completed in {load_time:.2f} seconds")
 
     # ===============================================================
-    # 2. SUMMARY
+    # 2. OPTIMIZE DATAFRAMES FOR ARROW (if enabled)
+    # ===============================================================
+    if ENABLE_ARROW and arrow_enabled == "true":
+        print("\n" + "=" * 60)
+        print("=== OPTIMIZING DATAFRAMES FOR ARROW ===")
+        print("=" * 60)
+
+        optimized_dataframes = []
+        for df, name, typ, rows, cols in all_dataframes:
+            print(f"  Optimizing: {name}...")
+
+            # Optimize partition size for Arrow
+            optimized_df = optimize_dataframe_for_arrow(df)
+
+            # Re-cache with optimized partitions
+            optimized_df = optimized_df.persist()
+
+            optimized_dataframes.append((optimized_df, name, typ, rows, cols))
+
+        all_dataframes = optimized_dataframes
+        print("✓ All DataFrames optimized for Arrow processing")
+
+    # ===============================================================
+    # 3. SUMMARY
     # ===============================================================
     print("\n" + "="*60)
     print("=== LOADING SUMMARY ===")
     print("="*60)
     print(f"Total tables: {len(all_dataframes)}")
+
+    total_rows = sum(rows for _, _, _, rows, _ in all_dataframes)
+    total_cols = sum(cols for _, _, _, _, cols in all_dataframes)
+
+    print(f"Total rows: {total_rows:,}")
+    print(f"Total columns: {total_cols:,}")
+    print(f"\nTable details:")
+
     for _, name, typ, rows, cols in all_dataframes:
         print(f" • {name:40} [{typ:7}] {rows:8,} rows, {cols:5} cols")
 
     # ===============================================================
-    # 3. SAMPLE SCHEMAS (first 3)
+    # 4. SAMPLE SCHEMAS (first 3)
     # ===============================================================
     print("\n" + "="*60)
     print("=== SAMPLE SCHEMAS (first 3) ===")
@@ -145,13 +201,14 @@ def main():
         df.show(3, truncate=100)
 
     # ===============================================================
-    # 4. WRITE TO ICEBERG
+    # 5. WRITE TO ICEBERG
     # ===============================================================
     print("\n" + "="*60)
     print("=== WRITING TO ICEBERG ===")
     print("="*60)
 
     tables_to_write = [(df, name) for df, name, _, _, _ in all_dataframes]
+    write_start = time.time()
 
     write_to_iceberg(
         spark=spark,
@@ -160,15 +217,50 @@ def main():
         mode="overwrite",
         extra_options={"format-version": "2"}
     )
+    write_time = time.time() - write_start
+    print(f"\n⏱️ Write completed in {write_time:.2f} seconds")
 
+    # ===============================================================
+    # 6. VERIFY
+    # ===============================================================
+    print("\n" + "=" * 60)
+    print("=== VERIFYING ICEBERG TABLES ===")
+    print("=" * 60)
     verify_iceberg(spark, database="local.iceberg_db", sample_rows=3)
 
     # ===============================================================
-    # 5. CLEANUP
+    # 7. PERFORMANCE SUMMARY
     # ===============================================================
-    print("\n" + "="*60)
-    print("Success: PIPELINE COMPLETE!")
-    print("="*60)
+    total_time = time.time() - start_time
+
+    print("\n" + "=" * 60)
+    print("=== PERFORMANCE SUMMARY ===")
+    print("=" * 60)
+    print(f"Total execution time: {total_time:.2f} seconds")
+    print(f"  - Data loading: {load_time:.2f}s")
+    print(f"  - Iceberg write: {write_time:.2f}s")
+    print(f"  - Other operations: {(total_time - load_time - write_time):.2f}s")
+
+    if ENABLE_ARROW and arrow_enabled == "true":
+        print(f"\n✓ PyArrow optimization: ENABLED")
+        print(f"  - Batch size: {ARROW_BATCH_SIZE:,}")
+        print(f"  - This significantly speeds up pandas conversions")
+    else:
+        print(f"\n⚠️ PyArrow optimization: DISABLED")
+        print(f"  - Install PyArrow for better performance:")
+        print(f"    pip install pyarrow>=14.0.0")
+
+    rows_per_second = total_rows / total_time if total_time > 0 else 0
+    print(f"\nThroughput: {rows_per_second:,.0f} rows/second")
+
+    # ===============================================================
+    # 8. CLEANUP
+    # ===============================================================
+    print("\n" + "=" * 60)
+    print("✅ SUCCESS: PIPELINE COMPLETE!")
+    print("=" * 60)
+
+    # Unpersist all DataFrames to free memory
     for df, _, _, _, _ in all_dataframes:
         df.unpersist()
 

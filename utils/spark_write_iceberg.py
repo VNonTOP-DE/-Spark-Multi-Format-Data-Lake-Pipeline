@@ -65,6 +65,7 @@ def write_to_iceberg(
     # ------------------------------------------------------------------
     for df, tbl in df_table_pairs:
         full_name = f"{database}.{tbl}"
+        row_count = df.count()
         writer = df.write.mode(mode)
 
         # ---- partitioning (optional) ----
@@ -77,7 +78,7 @@ def write_to_iceberg(
         for k, v in default_opts.items():
             writer = writer.option(k, v)
 
-        log.info("Writing %s rows → %s (mode=%s)", full_name, mode)
+        log.info(f"Writing %s rows → %s (mode=%s)", row_count, full_name, mode)
         writer.saveAsTable(full_name)
 
     log.info("All %d tables written to Iceberg!", len(df_table_pairs))
