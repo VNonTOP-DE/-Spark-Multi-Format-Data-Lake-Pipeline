@@ -416,7 +416,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Your Name - [@vnontop](tuannguyenworkde@gmail.com)
 
-Project Link: [[https://github.com/yourusername/spark-multi-format-pipeline](https://github.com/vnontop-DE/-spark-multi-format-pipeline)](https://github.com/VNonTOP-DE/-Spark-Multi-Format-Data-Lake-Pipeline)
+Project Link: [(https://github.com/VNonTOP-DE/-Spark-Multi-Format-Data-Lake-Pipeline)]
 
 ## 🗺️ Roadmap
 
