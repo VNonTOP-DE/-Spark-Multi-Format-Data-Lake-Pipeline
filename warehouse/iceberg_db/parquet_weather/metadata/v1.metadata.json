@@ -1,0 +1,175 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "c185fa27-cd59-4088-9923-f21fe18b0b77",
+  "location" : "C:\\Users\\Public\\Frequently_Case\\warehouse/iceberg_db/parquet_weather",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1762930881484,
+  "last-column-id" : 22,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "MinTemp",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 2,
+      "name" : "MaxTemp",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 3,
+      "name" : "Rainfall",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 4,
+      "name" : "Evaporation",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 5,
+      "name" : "Sunshine",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 6,
+      "name" : "WindGustDir",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 7,
+      "name" : "WindGustSpeed",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "WindDir9am",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "WindDir3pm",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 10,
+      "name" : "WindSpeed9am",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 11,
+      "name" : "WindSpeed3pm",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 12,
+      "name" : "Humidity9am",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 13,
+      "name" : "Humidity3pm",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 14,
+      "name" : "Pressure9am",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 15,
+      "name" : "Pressure3pm",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 16,
+      "name" : "Cloud9am",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 17,
+      "name" : "Cloud3pm",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 18,
+      "name" : "Temp9am",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 19,
+      "name" : "Temp3pm",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 20,
+      "name" : "RainToday",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 21,
+      "name" : "RISK_MM",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 22,
+      "name" : "RainTomorrow",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "Gap doi den chet",
+    "write.format.default" : "parquet",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 3648063248887956545,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 3648063248887956545,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 3648063248887956545,
+    "timestamp-ms" : 1762930881484,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1762930795423",
+      "added-data-files" : "1",
+      "added-records" : "366",
+      "added-files-size" : "16928",
+      "changed-partition-count" : "1",
+      "total-records" : "366",
+      "total-files-size" : "16928",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "C:/Users/Public/Frequently_Case/warehouse/iceberg_db/parquet_weather/metadata/snap-3648063248887956545-1-40117458-2caa-4064-bb2a-bd7d3e727884.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1762930881484,
+    "snapshot-id" : 3648063248887956545
+  } ],
+  "metadata-log" : [ ]
+}

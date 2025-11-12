@@ -1,0 +1,151 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "27aeb3e5-c983-4b6f-895f-28c51da7a2ef",
+  "location" : "C:\\Users\\Public\\Frequently_Case\\warehouse/iceberg_db/json_nhatkyxem",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1762930878637,
+  "last-column-id" : 16,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "activityControls",
+      "required" : false,
+      "type" : {
+        "type" : "list",
+        "element-id" : 10,
+        "element" : "string",
+        "element-required" : false
+      }
+    }, {
+      "id" : 2,
+      "name" : "description",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "details",
+      "required" : false,
+      "type" : {
+        "type" : "list",
+        "element-id" : 11,
+        "element" : {
+          "type" : "struct",
+          "fields" : [ {
+            "id" : 12,
+            "name" : "name",
+            "required" : false,
+            "type" : "string"
+          } ]
+        },
+        "element-required" : false
+      }
+    }, {
+      "id" : 4,
+      "name" : "header",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "products",
+      "required" : false,
+      "type" : {
+        "type" : "list",
+        "element-id" : 13,
+        "element" : "string",
+        "element-required" : false
+      }
+    }, {
+      "id" : 6,
+      "name" : "subtitles",
+      "required" : false,
+      "type" : {
+        "type" : "list",
+        "element-id" : 14,
+        "element" : {
+          "type" : "struct",
+          "fields" : [ {
+            "id" : 15,
+            "name" : "name",
+            "required" : false,
+            "type" : "string"
+          }, {
+            "id" : 16,
+            "name" : "url",
+            "required" : false,
+            "type" : "string"
+          } ]
+        },
+        "element-required" : false
+      }
+    }, {
+      "id" : 7,
+      "name" : "time",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "title",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "titleUrl",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "Gap doi den chet",
+    "write.format.default" : "parquet",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 4555405814670678665,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 4555405814670678665,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 4555405814670678665,
+    "timestamp-ms" : 1762930878637,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1762930795423",
+      "added-data-files" : "1",
+      "added-records" : "6081",
+      "added-files-size" : "361224",
+      "changed-partition-count" : "1",
+      "total-records" : "6081",
+      "total-files-size" : "361224",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "C:/Users/Public/Frequently_Case/warehouse/iceberg_db/json_nhatkyxem/metadata/snap-4555405814670678665-1-b0510d36-c69f-498e-8411-33ed188da70a.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1762930878637,
+    "snapshot-id" : 4555405814670678665
+  } ],
+  "metadata-log" : [ ]
+}

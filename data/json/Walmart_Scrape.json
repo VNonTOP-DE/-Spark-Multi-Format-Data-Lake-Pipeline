@@ -1,0 +1,291 @@
+{
+  "name": "Walmart Scrape",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "51349837-f8a0-4b75-8cc4-7990a6c57690",
+      "name": "When chat message received",
+      "webhookId": "1d3f9689-920f-47d0-98b1-d5296e8cf9b4"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the keyword from the chat input\nconst keywordFromChat = $input.first().json.chatInput;\n\n// Log the keyword for debugging (optional)\nconsole.log(\"From chat:\", keywordFromChat);\n\n// Set the maximum number of pages (e.g., for pagination)\nconst maxPages = 5;\n\n// Helper function to manually encode query parameters\nfunction encodeQueryParams(params) {\n  return Object.entries(params)\n    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)\n    .join(\"&\");\n}\n\n// Generate search URLs for pages 1 to 5\nlet urls = [];\nfor (let page = 1; page <= maxPages; page++) {\n  const payload = {\n    q: keywordFromChat,          // Search keyword (e.g., \"perfume\")\n    sort: \"best_seller\",         // Sort by best sellers\n    page: page,                  // Page number (1 to 5)\n    affinityOverride: \"default\"  // Default affinity setting\n  };\n  const queryString = encodeQueryParams(payload);\n  const searchUrl = \"https://www.walmart.com/search?\" + queryString;\n  urls.push({ json: { url: searchUrl, keyword: keywordFromChat, page: page } });\n}\n\n// Return the array of URL objects\nreturn urls;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        0
+      ],
+      "id": "d5bc5a83-cc8e-4329-ba4d-e95c63f3e2f2",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36\""
+            },
+            {
+              "name": "Accept",
+              "value": "\"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\""
+            },
+            {
+              "name": "Referer",
+              "value": "\"https://www.walmart.com\""
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        0
+      ],
+      "id": "a8b54772-596a-4e62-a15c-c6bb869b1870",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        0
+      ],
+      "id": "07916d77-d331-4460-a352-e4dff388b671",
+      "name": "Wait",
+      "webhookId": "a2506386-fc03-426e-8d53-f8c5d89e86af"
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "name",
+              "cssSelector": "span[data-automation-id=\"product-title\"]"
+            },
+            {
+              "key": "price",
+              "cssSelector": "div[data-automation-id=\"product-price\"] span.w_iUH7"
+            },
+            {
+              "key": "rating",
+              "cssSelector": "span[data-testid=\"product-reviews\"] + span.w_iUH7"
+            },
+            {
+              "key": "full",
+              "cssSelector": "div[role=\"group\"] div[data-automation-id=\"fulfillment-badge\"] > div.f7.flex.self-baseline.dark-gray",
+              "returnArray": true
+            },
+            {
+              "key": "url",
+              "cssSelector": "div.mb0.ph0-xl.pt0-xl.bb.b--near-white.w-25.pb3-m.ph1 a.w-100.h-100.z-1.hide-sibling-opacity.absolute",
+              "returnValue": "attribute",
+              "attribute": "href"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1580,
+        0
+      ],
+      "id": "4f11e05f-57ec-485e-8798-41dcef125147",
+      "name": "HTML"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('HTTP Request').item.json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "={{ $json.result[0]['user-agent'] }}"
+            },
+            {
+              "name": "Accept",
+              "value": "={{ $json.result[0].accept }}"
+            },
+            {
+              "name": "Referer",
+              "value": "\"https://www.walmart.com\""
+            },
+            {
+              "name": "Upgrade-Insecure-Requests",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        0
+      ],
+      "id": "3661ac74-ec78-490a-b871-d53d01f7abe1",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "url": "https://headers.scrapeops.io/v1/browser-headers?api_key=e5ffed07-3000-485b-8193-cc36da6139f5&num_results=2",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        0
+      ],
+      "id": "7322b61d-69f0-4923-b997-30a5fd5e1008",
+      "name": "Request Proxy"
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {
+          "fileName": "= {{ $('When chat message received').item.json.chatInput }}-data.json"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1800,
+        0
+      ],
+      "id": "1e4151f3-cac6-4b72-be76-98a2a286ce76",
+      "name": "Convert to File"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Request Proxy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request Proxy": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a85eecd7-511a-48f4-b6e1-bb3bbcba3360",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "fb3ef03bca5c8485e332db64f3fef2e5218419ae7d8cc4cdd7157cc40bcd4857"
+  },
+  "id": "rNAu5hLp5HxATXGV",
+  "tags": [
+    {
+      "createdAt": "2025-04-05T04:37:01.414Z",
+      "updatedAt": "2025-04-05T04:37:01.414Z",
+      "id": "JYbWhVu8ZRULHhNd",
+      "name": "webscraping tutorial"
+    }
+  ]
+}

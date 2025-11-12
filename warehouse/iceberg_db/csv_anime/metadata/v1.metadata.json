@@ -1,0 +1,155 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "ca20a642-dbe0-47e0-a090-1c5970e1d2e4",
+  "location" : "C:\\Users\\Public\\Frequently_Case\\warehouse/iceberg_db/csv_anime",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1762930880113,
+  "last-column-id" : 18,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "title",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "japanese_title",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "english_title",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "type",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "episodes",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 6,
+      "name" : "status",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 7,
+      "name" : "aired",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "premiered",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "broadcast",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 10,
+      "name" : "source",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 11,
+      "name" : "duration",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 12,
+      "name" : "rating",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 13,
+      "name" : "score",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 14,
+      "name" : "ranked",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 15,
+      "name" : "popularity",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 16,
+      "name" : "members",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 17,
+      "name" : "favorites",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 18,
+      "name" : "image_url",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "Gap doi den chet",
+    "write.format.default" : "parquet",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 4138755215590750201,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 4138755215590750201,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 4138755215590750201,
+    "timestamp-ms" : 1762930880113,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1762930795423",
+      "added-data-files" : "1",
+      "added-records" : "4449",
+      "added-files-size" : "388396",
+      "changed-partition-count" : "1",
+      "total-records" : "4449",
+      "total-files-size" : "388396",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "C:/Users/Public/Frequently_Case/warehouse/iceberg_db/csv_anime/metadata/snap-4138755215590750201-1-e723b9a0-c5f8-46f1-821e-6911d6465c73.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1762930880113,
+    "snapshot-id" : 4138755215590750201
+  } ],
+  "metadata-log" : [ ]
+}

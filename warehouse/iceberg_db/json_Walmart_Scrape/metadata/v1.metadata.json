@@ -1,0 +1,631 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "506cf8c1-ec1d-4b48-af2d-26aac34aa155",
+  "location" : "C:\\Users\\Public\\Frequently_Case\\warehouse/iceberg_db/json_Walmart_Scrape",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1762930879521,
+  "last-column-id" : 97,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "active",
+      "required" : false,
+      "type" : "boolean"
+    }, {
+      "id" : 2,
+      "name" : "connections",
+      "required" : false,
+      "type" : {
+        "type" : "struct",
+        "fields" : [ {
+          "id" : 10,
+          "name" : "Code",
+          "required" : false,
+          "type" : {
+            "type" : "struct",
+            "fields" : [ {
+              "id" : 17,
+              "name" : "main",
+              "required" : false,
+              "type" : {
+                "type" : "list",
+                "element-id" : 18,
+                "element" : {
+                  "type" : "list",
+                  "element-id" : 19,
+                  "element" : {
+                    "type" : "struct",
+                    "fields" : [ {
+                      "id" : 20,
+                      "name" : "index",
+                      "required" : false,
+                      "type" : "long"
+                    }, {
+                      "id" : 21,
+                      "name" : "node",
+                      "required" : false,
+                      "type" : "string"
+                    }, {
+                      "id" : 22,
+                      "name" : "type",
+                      "required" : false,
+                      "type" : "string"
+                    } ]
+                  },
+                  "element-required" : false
+                },
+                "element-required" : false
+              }
+            } ]
+          }
+        }, {
+          "id" : 11,
+          "name" : "HTML",
+          "required" : false,
+          "type" : {
+            "type" : "struct",
+            "fields" : [ {
+              "id" : 23,
+              "name" : "main",
+              "required" : false,
+              "type" : {
+                "type" : "list",
+                "element-id" : 24,
+                "element" : {
+                  "type" : "list",
+                  "element-id" : 25,
+                  "element" : {
+                    "type" : "struct",
+                    "fields" : [ {
+                      "id" : 26,
+                      "name" : "index",
+                      "required" : false,
+                      "type" : "long"
+                    }, {
+                      "id" : 27,
+                      "name" : "node",
+                      "required" : false,
+                      "type" : "string"
+                    }, {
+                      "id" : 28,
+                      "name" : "type",
+                      "required" : false,
+                      "type" : "string"
+                    } ]
+                  },
+                  "element-required" : false
+                },
+                "element-required" : false
+              }
+            } ]
+          }
+        }, {
+          "id" : 12,
+          "name" : "HTTP Request",
+          "required" : false,
+          "type" : {
+            "type" : "struct",
+            "fields" : [ {
+              "id" : 29,
+              "name" : "main",
+              "required" : false,
+              "type" : {
+                "type" : "list",
+                "element-id" : 30,
+                "element" : {
+                  "type" : "list",
+                  "element-id" : 31,
+                  "element" : {
+                    "type" : "struct",
+                    "fields" : [ {
+                      "id" : 32,
+                      "name" : "index",
+                      "required" : false,
+                      "type" : "long"
+                    }, {
+                      "id" : 33,
+                      "name" : "node",
+                      "required" : false,
+                      "type" : "string"
+                    }, {
+                      "id" : 34,
+                      "name" : "type",
+                      "required" : false,
+                      "type" : "string"
+                    } ]
+                  },
+                  "element-required" : false
+                },
+                "element-required" : false
+              }
+            } ]
+          }
+        }, {
+          "id" : 13,
+          "name" : "HTTP Request1",
+          "required" : false,
+          "type" : {
+            "type" : "struct",
+            "fields" : [ {
+              "id" : 35,
+              "name" : "main",
+              "required" : false,
+              "type" : {
+                "type" : "list",
+                "element-id" : 36,
+                "element" : {
+                  "type" : "list",
+                  "element-id" : 37,
+                  "element" : {
+                    "type" : "struct",
+                    "fields" : [ {
+                      "id" : 38,
+                      "name" : "index",
+                      "required" : false,
+                      "type" : "long"
+                    }, {
+                      "id" : 39,
+                      "name" : "node",
+                      "required" : false,
+                      "type" : "string"
+                    }, {
+                      "id" : 40,
+                      "name" : "type",
+                      "required" : false,
+                      "type" : "string"
+                    } ]
+                  },
+                  "element-required" : false
+                },
+                "element-required" : false
+              }
+            } ]
+          }
+        }, {
+          "id" : 14,
+          "name" : "Request Proxy",
+          "required" : false,
+          "type" : {
+            "type" : "struct",
+            "fields" : [ {
+              "id" : 41,
+              "name" : "main",
+              "required" : false,
+              "type" : {
+                "type" : "list",
+                "element-id" : 42,
+                "element" : {
+                  "type" : "list",
+                  "element-id" : 43,
+                  "element" : {
+                    "type" : "struct",
+                    "fields" : [ {
+                      "id" : 44,
+                      "name" : "index",
+                      "required" : false,
+                      "type" : "long"
+                    }, {
+                      "id" : 45,
+                      "name" : "node",
+                      "required" : false,
+                      "type" : "string"
+                    }, {
+                      "id" : 46,
+                      "name" : "type",
+                      "required" : false,
+                      "type" : "string"
+                    } ]
+                  },
+                  "element-required" : false
+                },
+                "element-required" : false
+              }
+            } ]
+          }
+        }, {
+          "id" : 15,
+          "name" : "Wait",
+          "required" : false,
+          "type" : {
+            "type" : "struct",
+            "fields" : [ {
+              "id" : 47,
+              "name" : "main",
+              "required" : false,
+              "type" : {
+                "type" : "list",
+                "element-id" : 48,
+                "element" : {
+                  "type" : "list",
+                  "element-id" : 49,
+                  "element" : {
+                    "type" : "struct",
+                    "fields" : [ {
+                      "id" : 50,
+                      "name" : "index",
+                      "required" : false,
+                      "type" : "long"
+                    }, {
+                      "id" : 51,
+                      "name" : "node",
+                      "required" : false,
+                      "type" : "string"
+                    }, {
+                      "id" : 52,
+                      "name" : "type",
+                      "required" : false,
+                      "type" : "string"
+                    } ]
+                  },
+                  "element-required" : false
+                },
+                "element-required" : false
+              }
+            } ]
+          }
+        }, {
+          "id" : 16,
+          "name" : "When chat message received",
+          "required" : false,
+          "type" : {
+            "type" : "struct",
+            "fields" : [ {
+              "id" : 53,
+              "name" : "main",
+              "required" : false,
+              "type" : {
+                "type" : "list",
+                "element-id" : 54,
+                "element" : {
+                  "type" : "list",
+                  "element-id" : 55,
+                  "element" : {
+                    "type" : "struct",
+                    "fields" : [ {
+                      "id" : 56,
+                      "name" : "index",
+                      "required" : false,
+                      "type" : "long"
+                    }, {
+                      "id" : 57,
+                      "name" : "node",
+                      "required" : false,
+                      "type" : "string"
+                    }, {
+                      "id" : 58,
+                      "name" : "type",
+                      "required" : false,
+                      "type" : "string"
+                    } ]
+                  },
+                  "element-required" : false
+                },
+                "element-required" : false
+              }
+            } ]
+          }
+        } ]
+      }
+    }, {
+      "id" : 3,
+      "name" : "id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "meta",
+      "required" : false,
+      "type" : {
+        "type" : "struct",
+        "fields" : [ {
+          "id" : 59,
+          "name" : "instanceId",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "id" : 60,
+          "name" : "templateCredsSetupCompleted",
+          "required" : false,
+          "type" : "boolean"
+        } ]
+      }
+    }, {
+      "id" : 5,
+      "name" : "name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 6,
+      "name" : "nodes",
+      "required" : false,
+      "type" : {
+        "type" : "list",
+        "element-id" : 61,
+        "element" : {
+          "type" : "struct",
+          "fields" : [ {
+            "id" : 62,
+            "name" : "id",
+            "required" : false,
+            "type" : "string"
+          }, {
+            "id" : 63,
+            "name" : "name",
+            "required" : false,
+            "type" : "string"
+          }, {
+            "id" : 64,
+            "name" : "parameters",
+            "required" : false,
+            "type" : {
+              "type" : "struct",
+              "fields" : [ {
+                "id" : 69,
+                "name" : "extractionValues",
+                "required" : false,
+                "type" : {
+                  "type" : "struct",
+                  "fields" : [ {
+                    "id" : 76,
+                    "name" : "values",
+                    "required" : false,
+                    "type" : {
+                      "type" : "list",
+                      "element-id" : 77,
+                      "element" : {
+                        "type" : "struct",
+                        "fields" : [ {
+                          "id" : 78,
+                          "name" : "attribute",
+                          "required" : false,
+                          "type" : "string"
+                        }, {
+                          "id" : 79,
+                          "name" : "cssSelector",
+                          "required" : false,
+                          "type" : "string"
+                        }, {
+                          "id" : 80,
+                          "name" : "key",
+                          "required" : false,
+                          "type" : "string"
+                        }, {
+                          "id" : 81,
+                          "name" : "returnArray",
+                          "required" : false,
+                          "type" : "boolean"
+                        }, {
+                          "id" : 82,
+                          "name" : "returnValue",
+                          "required" : false,
+                          "type" : "string"
+                        } ]
+                      },
+                      "element-required" : false
+                    }
+                  } ]
+                }
+              }, {
+                "id" : 70,
+                "name" : "headerParameters",
+                "required" : false,
+                "type" : {
+                  "type" : "struct",
+                  "fields" : [ {
+                    "id" : 83,
+                    "name" : "parameters",
+                    "required" : false,
+                    "type" : {
+                      "type" : "list",
+                      "element-id" : 84,
+                      "element" : {
+                        "type" : "struct",
+                        "fields" : [ {
+                          "id" : 85,
+                          "name" : "name",
+                          "required" : false,
+                          "type" : "string"
+                        }, {
+                          "id" : 86,
+                          "name" : "value",
+                          "required" : false,
+                          "type" : "string"
+                        } ]
+                      },
+                      "element-required" : false
+                    }
+                  } ]
+                }
+              }, {
+                "id" : 71,
+                "name" : "jsCode",
+                "required" : false,
+                "type" : "string"
+              }, {
+                "id" : 72,
+                "name" : "operation",
+                "required" : false,
+                "type" : "string"
+              }, {
+                "id" : 73,
+                "name" : "options",
+                "required" : false,
+                "type" : {
+                  "type" : "struct",
+                  "fields" : [ {
+                    "id" : 87,
+                    "name" : "fileName",
+                    "required" : false,
+                    "type" : "string"
+                  }, {
+                    "id" : 88,
+                    "name" : "response",
+                    "required" : false,
+                    "type" : {
+                      "type" : "struct",
+                      "fields" : [ {
+                        "id" : 89,
+                        "name" : "response",
+                        "required" : false,
+                        "type" : {
+                          "type" : "struct",
+                          "fields" : [ {
+                            "id" : 90,
+                            "name" : "responseFormat",
+                            "required" : false,
+                            "type" : "string"
+                          } ]
+                        }
+                      } ]
+                    }
+                  } ]
+                }
+              }, {
+                "id" : 74,
+                "name" : "sendHeaders",
+                "required" : false,
+                "type" : "boolean"
+              }, {
+                "id" : 75,
+                "name" : "url",
+                "required" : false,
+                "type" : "string"
+              } ]
+            }
+          }, {
+            "id" : 65,
+            "name" : "position",
+            "required" : false,
+            "type" : {
+              "type" : "list",
+              "element-id" : 91,
+              "element" : "long",
+              "element-required" : false
+            }
+          }, {
+            "id" : 66,
+            "name" : "type",
+            "required" : false,
+            "type" : "string"
+          }, {
+            "id" : 67,
+            "name" : "typeVersion",
+            "required" : false,
+            "type" : "double"
+          }, {
+            "id" : 68,
+            "name" : "webhookId",
+            "required" : false,
+            "type" : "string"
+          } ]
+        },
+        "element-required" : false
+      }
+    }, {
+      "id" : 7,
+      "name" : "settings",
+      "required" : false,
+      "type" : {
+        "type" : "struct",
+        "fields" : [ {
+          "id" : 92,
+          "name" : "executionOrder",
+          "required" : false,
+          "type" : "string"
+        } ]
+      }
+    }, {
+      "id" : 8,
+      "name" : "tags",
+      "required" : false,
+      "type" : {
+        "type" : "list",
+        "element-id" : 93,
+        "element" : {
+          "type" : "struct",
+          "fields" : [ {
+            "id" : 94,
+            "name" : "createdAt",
+            "required" : false,
+            "type" : "string"
+          }, {
+            "id" : 95,
+            "name" : "id",
+            "required" : false,
+            "type" : "string"
+          }, {
+            "id" : 96,
+            "name" : "name",
+            "required" : false,
+            "type" : "string"
+          }, {
+            "id" : 97,
+            "name" : "updatedAt",
+            "required" : false,
+            "type" : "string"
+          } ]
+        },
+        "element-required" : false
+      }
+    }, {
+      "id" : 9,
+      "name" : "versionId",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "Gap doi den chet",
+    "write.format.default" : "parquet",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 8885655693749069820,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 8885655693749069820,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 8885655693749069820,
+    "timestamp-ms" : 1762930879521,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1762930795423",
+      "added-data-files" : "1",
+      "added-records" : "1",
+      "added-files-size" : "29485",
+      "changed-partition-count" : "1",
+      "total-records" : "1",
+      "total-files-size" : "29485",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "C:/Users/Public/Frequently_Case/warehouse/iceberg_db/json_Walmart_Scrape/metadata/snap-8885655693749069820-1-9b976c5d-9890-40b2-8782-93fe91540e95.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1762930879521,
+    "snapshot-id" : 8885655693749069820
+  } ],
+  "metadata-log" : [ ]
+}

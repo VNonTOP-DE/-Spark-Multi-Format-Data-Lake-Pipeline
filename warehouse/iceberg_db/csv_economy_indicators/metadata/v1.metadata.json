@@ -1,0 +1,95 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "da7a86fa-1737-42e2-baa7-c84f985a81c0",
+  "location" : "C:\\Users\\Public\\Frequently_Case\\warehouse/iceberg_db/csv_economy_indicators",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1762930880492,
+  "last-column-id" : 6,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "unit",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "source",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "sourceNote",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "sourceOrganization",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 6,
+      "name" : "topics",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "Gap doi den chet",
+    "write.format.default" : "parquet",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 1885168124255755639,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 1885168124255755639,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 1885168124255755639,
+    "timestamp-ms" : 1762930880492,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1762930795423",
+      "added-data-files" : "1",
+      "added-records" : "306",
+      "added-files-size" : "23259",
+      "changed-partition-count" : "1",
+      "total-records" : "306",
+      "total-files-size" : "23259",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "C:/Users/Public/Frequently_Case/warehouse/iceberg_db/csv_economy_indicators/metadata/snap-1885168124255755639-1-fe3f3524-78c7-4143-849c-5a0944568bfc.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1762930880492,
+    "snapshot-id" : 1885168124255755639
+  } ],
+  "metadata-log" : [ ]
+}

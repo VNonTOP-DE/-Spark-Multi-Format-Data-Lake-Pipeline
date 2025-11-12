@@ -1,0 +1,130 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "76617ce3-b918-4970-8b95-ab02e506b844",
+  "location" : "C:\\Users\\Public\\Frequently_Case\\warehouse/iceberg_db/parquet_house_price",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1762930880930,
+  "last-column-id" : 13,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "price",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "area",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 3,
+      "name" : "bedrooms",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 4,
+      "name" : "bathrooms",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 5,
+      "name" : "stories",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 6,
+      "name" : "mainroad",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 7,
+      "name" : "guestroom",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "basement",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "hotwaterheating",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 10,
+      "name" : "airconditioning",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 11,
+      "name" : "parking",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 12,
+      "name" : "prefarea",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 13,
+      "name" : "furnishingstatus",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "Gap doi den chet",
+    "write.format.default" : "parquet",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 5450810313289975840,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 5450810313289975840,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 5450810313289975840,
+    "timestamp-ms" : 1762930880930,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1762930795423",
+      "added-data-files" : "1",
+      "added-records" : "545",
+      "added-files-size" : "7607",
+      "changed-partition-count" : "1",
+      "total-records" : "545",
+      "total-files-size" : "7607",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "C:/Users/Public/Frequently_Case/warehouse/iceberg_db/parquet_house_price/metadata/snap-5450810313289975840-1-855e99b0-98b6-4057-8120-bb234a185f54.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1762930880930,
+    "snapshot-id" : 5450810313289975840
+  } ],
+  "metadata-log" : [ ]
+}

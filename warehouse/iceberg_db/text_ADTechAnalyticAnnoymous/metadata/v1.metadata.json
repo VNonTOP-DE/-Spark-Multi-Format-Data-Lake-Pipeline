@@ -1,0 +1,70 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "aea8eb48-9954-47fc-b086-12c3089c9895",
+  "location" : "C:\\Users\\Public\\Frequently_Case\\warehouse/iceberg_db/text_ADTechAnalyticAnnoymous",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1762930881783,
+  "last-column-id" : 1,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "value",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "Gap doi den chet",
+    "write.format.default" : "parquet",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 7102377491546951764,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 7102377491546951764,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 7102377491546951764,
+    "timestamp-ms" : 1762930881783,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1762930795423",
+      "added-data-files" : "1",
+      "added-records" : "3223",
+      "added-files-size" : "380718",
+      "changed-partition-count" : "1",
+      "total-records" : "3223",
+      "total-files-size" : "380718",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "C:/Users/Public/Frequently_Case/warehouse/iceberg_db/text_ADTechAnalyticAnnoymous/metadata/snap-7102377491546951764-1-e3c10bf5-8813-4518-907e-b1561da36da0.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1762930881783,
+    "snapshot-id" : 7102377491546951764
+  } ],
+  "metadata-log" : [ ]
+}
