@@ -199,11 +199,18 @@ project/
 │   └── docx/      # Place text files here
 ├── warehouse/     # Iceberg warehouse (auto-created)
 ├── config/
-│   └── spark_config.py
+│   ├── __init__.py
+│   ├── catalog_config.py                # Catalog session configuration
+│   ├── minio_config.py                  # MiniO session configuration
+│   └── spark_config.py                  # Spark session configuration
 ├── utils/
-│   └── spark_write_iceberg.py
-├── schema_manager.py
-└── main.py
+│   ├── __init__.py
+│   ├── catalog_manager.py
+│   ├── merge_utils.py                 # Merge from Iceberg to MiniO utilities
+│   └── spark_write_iceberg.py         # Iceberg write utilities
+├── schema_manager.py                  # Path configurations
+├── merge_to_minio.py
+└── main.py                            # Main pipeline orchestrator
 ```
 
 2. **Update paths in `schema_manager.py`**
@@ -283,18 +290,25 @@ Writing 4 table(s) to Iceberg database 'local.iceberg_db'...
 
 ```
 spark-multi-format-pipeline/
-├── main.py                      # Main pipeline orchestrator
-├── schema_manager.py            # Path configurations
+├── data/
+│   ├── json/      # Place JSON files here
+│   ├── csv/       # Place CSV files here
+│   ├── parquet/   # Place Parquet files here
+│   └── docx/      # Place text files here
+├── warehouse/     # Iceberg warehouse (auto-created)
 ├── config/
-│   └── spark_config.py          # Spark session configuration
+│   ├── __init__.py
+│   ├── catalog_config.py                # Catalog session configuration
+│   ├── minio_config.py                  # MiniO session configuration
+│   └── spark_config.py                  # Spark session configuration
 ├── utils/
-│   └── spark_write_iceberg.py   # Iceberg write utilities
-├── data/                        # Source data directories
-│   ├── json/
-│   ├── csv/
-│   ├── parquet/
-│   └── docx/
-├── warehouse/                   # Iceberg warehouse (auto-created)
+│   ├── __init__.py
+│   ├── catalog_manager.py
+│   ├── merge_utils.py                 # Merge from Iceberg to MiniO utilities
+│   └── spark_write_iceberg.py         # Iceberg write utilities
+├── schema_manager.py                  # Path configurations
+├── merge_to_minio.py
+└── main.py                            # Main pipeline orchestrator
 ├── requirements.txt             # Python dependencies
 ├── README.md                    # This file
 └── LICENSE                      # MIT License
@@ -400,9 +414,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Your Name - [@yourhandle](https://twitter.com/yourhandle)
+Your Name - [@vnontop](tuannguyenworkde@gmail.com)
 
-Project Link: [https://github.com/yourusername/spark-multi-format-pipeline](https://github.com/yourusername/spark-multi-format-pipeline)
+Project Link: [https://github.com/yourusername/spark-multi-format-pipeline](https://github.com/vnontop-DE/spark-multi-format-pipeline)
 
 ## 🗺️ Roadmap
 
