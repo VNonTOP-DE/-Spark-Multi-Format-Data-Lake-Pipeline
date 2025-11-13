@@ -4,6 +4,7 @@ A production-ready PySpark pipeline that ingests heterogeneous data files (JSON,
 
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PySpark](https://img.shields.io/badge/PySpark-3.5+-orange.svg)](https://spark.apache.org/)
+[![PyArrow](https://img.shields.io/badge/PyArrow-14.0+-yellow.svg)](https://arrow.apache.org/docs/python/)
 [![Apache Iceberg](https://img.shields.io/badge/Iceberg-1.10+-brightgreen.svg)](https://iceberg.apache.org/)
 [![MinIO](https://img.shields.io/badge/MinIO-S3_Compatible-red.svg)](https://min.io/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -33,7 +34,7 @@ This pipeline solves a common data engineering challenge: **ingesting multiple f
 ## 🏗️ Architecture
 <img width="1759" height="871" alt="image" src="https://github.com/user-attachments/assets/55c34eb0-bfc2-4cd9-9a10-e429857fbed0" />
 
-
+```
 ┌─────────────────┐
 │  Source Files   │
 │  ├── JSON       │
@@ -83,7 +84,7 @@ This pipeline solves a common data engineering challenge: **ingesting multiple f
 │  ├── MySQL      │
 │  └── MongoDB    │
 └─────────────────┘
-
+```
 ## 📦 Features
 
 ### Multi-Format Support
